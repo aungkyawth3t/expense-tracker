@@ -1,52 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker | Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-4">
-
-  <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Create Account</h2>
-
-    <form action="#" method="POST" class="space-y-5">
-      <div>
-        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-        <input type="text" id="username" name="username"
-          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm" required>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="w-full max-w-md">
+      <div class="bg-white rounded-lg shadow-xl p-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-600">Create Account</h1>
+            <p class="text-gray-600 mt-2">Join Expense Tracker Admin Dashboard</p>
+        </div>
+          
+        <form>
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="first-name">
+                  First Name
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" id="first-name" type="text" placeholder="John">
+            </div>
+            <div>
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="last-name">
+                  Last Name
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" id="last-name" type="text" placeholder="Doe">
+            </div>
+          </div>
+            
+          <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                  Email
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" id="email" type="email" placeholder="admin@example.com">
+          </div>
+            
+          <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                  Password
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" id="password" type="password" placeholder="••••••••">
+          </div>
+            
+          <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">
+                  Confirm Password
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" id="confirm-password" type="password" placeholder="••••••••">
+          </div>
+          
+          <div class="mb-6">
+              <div class="flex items-center">
+                  <input id="terms" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                  <label for="terms" class="ml-2 block text-sm text-gray-700">
+                      I agree to the <a href="#" class="text-indigo-600 hover:text-indigo-500">Terms & Conditions</a>
+                  </label>
+              </div>
+          </div>
+          
+          <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150" type="button">
+              Register
+          </button>
+        </form>
+          
+        <div class="mt-6 text-center">
+          <p class="text-gray-600 text-sm">
+              Already have an account? 
+              <a href="#" class="text-indigo-600 hover:text-indigo-500 font-medium">Sign in here</a>
+          </p>
+        </div>
       </div>
-
-      <div>
-        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" id="email" name="email"
-          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm" required>
+        
+      <div class="mt-6 text-center text-gray-500 text-xs">
+          &copy;2025 Expense Tracker. All rights reserved.
       </div>
-
-      <div>
-        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="password" name="password"
-          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm" required>
-      </div>
-
-      <div>
-        <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-        <input type="password" id="confirm_password" name="confirm_password"
-          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm" required>
-      </div>
-
-      <button type="submit"
-        class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300">
-        Register
-      </button>
-
-      <p class="text-sm text-center text-gray-500">
-        Already have an account?
-        <a href="#" class="text-purple-600 hover:text-purple-800 font-medium">Login</a>
-      </p>
-    </form>
-  </div>
-
+    </div>
 </body>
 </html>
