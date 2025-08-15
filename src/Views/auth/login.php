@@ -1,3 +1,7 @@
+<?php
+    include('../../function/url.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,14 +51,11 @@
             <div class="mt-6 text-center">
                 <p class="text-gray-600 text-sm">
                     Don't have an account? 
-                    <a href="#" class="text-indigo-600 hover:text-indigo-500 font-medium">Register here</a>
+                    <a href="<?= url('src/views/auth/register.php') ?>" class="text-indigo-600 hover:text-indigo-500 font-medium">Register here</a>
                 </p>
             </div>
         </div>
-        
-        <div class="mt-6 text-center text-gray-500 text-xs">
-            &copy;2025 Aung Kyaw Thet. All rights reserved.
-        </div>
+        <?php include('../components/copyright.php'); ?>
     </div>
 </body>
 </html>

@@ -1,0 +1,24 @@
+<!-- charts -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+    <div class="bg-white rounded-lg shadow p-6 lg:col-span-2">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-semibold text-gray-800">Monthly Expenses</h2>
+            <div class="flex">
+                <button class="px-3 py-1 text-sm bg-indigo-100 text-indigo-700 rounded-l-lg">Month</button>
+                <button class="px-3 py-1 text-sm bg-white text-gray-600 border border-l-0">Quarter</button>
+                <button class="px-3 py-1 text-sm bg-white text-gray-600 border border-l-0 rounded-r-lg">Year</button>
+            </div>
+        </div>
+        <div class="h-64">
+            <canvas id="monthlyExpensesChart"></canvas>
+        </div>
+    </div>
+    
+    <!-- expense breakdown -->
+    <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">Expense Breakdown</h2>
+        <div class="h-64">
+            <canvas id="expenseBreakdownChart"></canvas>
+        </div>
+    </div>
+</div>
