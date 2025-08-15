@@ -1,3 +1,4 @@
+
 <header class="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200 shadow-sm">
     <div class="flex items-center">
         <button class="text-gray-500 focus:outline-none md:hidden">
@@ -21,7 +22,7 @@
         <div class="relative">
             <button class="flex items-center focus:outline-none">
                 <img class="w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User profile">
-                <span class="ml-2 text-sm font-medium text-gray-700">John Doe</span>
+                <span class="ml-2 text-sm font-medium text-gray-700"> <?= $_SESSION['user_name'] ?> </span>
                 <i class="fas fa-chevron-down ml-1 text-gray-500 text-xs"></i>
             </button>
         </div>

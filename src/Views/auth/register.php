@@ -49,7 +49,7 @@
         if (empty($errors)) {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             // insert
-            $stmt = $pdo->prepare("INSERT INTO users(name, email, password) VALUES (?, ?, ?, ?)");
+            $stmt = $pdo->prepare("INSERT INTO users(name, email, password) VALUES (?, ?, ?)");
             $result = $stmt->execute([
                 $name,
                 $email,
@@ -155,7 +155,7 @@
                     <input class="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['confirm_password']) ? 'border-red-500' : '' ?>" 
                     id="confirm-password" 
                     type="password" 
-                    name="confirm-password" 
+                    name="confirm_password" 
                     placeholder="••••••••">
                     <?php if (isset($errors['confirm_password'])): ?>
                         <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['confirm_password']) ?></p>

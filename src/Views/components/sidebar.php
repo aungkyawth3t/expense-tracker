@@ -22,7 +22,7 @@
                     <i class="fas fa-tags mr-3"></i>
                     Categories
                 </a>
-                <a href="#" class="flex items-center px-2 py-3 text-sm font-medium text-indigo-200 hover:text-white hover:bg-indigo-700 rounded-lg">
+                <a href="<?= url('src/views/reports.php') ?>" class="flex items-center px-2 py-3 text-sm font-medium <?= isActive('/src/views/reports.php') ? 'text-white bg-indigo-900' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' ?> rounded-lg">
                     <i class="fas fa-chart-pie mr-3"></i>
                     Reports
                 </a>
