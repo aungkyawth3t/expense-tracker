@@ -1,7 +1,6 @@
 <?php
     include('../function/url.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
