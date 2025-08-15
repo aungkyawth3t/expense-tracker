@@ -1,3 +1,4 @@
+
 // Monthly Expenses Chart
 const monthlyExpensesCtx = document.getElementById('monthlyExpensesChart').getContext('2d');
 const monthlyExpensesChart = new Chart(monthlyExpensesCtx, {
@@ -65,31 +66,3 @@ const expenseBreakdownChart = new Chart(expenseBreakdownCtx, {
         cutout: '70%'
     }
 });
-
-// category modal
-function openAddCategoryModal() {
-    document.getElementById('addCategoryModal').classList.remove('hidden');
-}
-
-function closeAddCategoryModal() {
-    document.getElementById('addCategoryModal').classList.add('hidden');
-}
-
-function openEditCategoryModal() {
-    // Pre-fill form with category data
-    document.getElementById('categoryName').value = 'Food & Dining';
-    document.getElementById('categoryDescription').value = 'Groceries, restaurants, etc.';
-    document.getElementById('categoryBudget').value = '600';
-    document.getElementById('categoryIcon').value = 'utensils';
-    document.getElementById('categoryColor').value = 'red';
-    document.getElementById('modal-title').textContent = 'Edit Category';
-    openAddCategoryModal();
-}
-
-function openDeleteCategoryModal() {
-    document.getElementById('deleteCategoryModal').classList.remove('hidden');
-}
-
-function closeDeleteCategoryModal() {
-    document.getElementById('deleteCategoryModal').classList.add('hidden');
-}

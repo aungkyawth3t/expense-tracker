@@ -8,15 +8,15 @@
         </div>
         <div class="flex flex-col flex-grow px-4 py-4 overflow-y-auto">
             <div class="space-y-1">
-                <a href="<?= url('index.php') ?>" class="flex items-center px-2 py-3 text-sm font-medium <?= isActive('index.php') ? 'text-white bg-indigo-900' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' ?> rounded-lg">
+                <a href="<?= url('src/views/index.php') ?>" class="flex items-center px-2 py-3 text-sm font-medium <?= isActive('/src/views/index.php') ? 'text-white bg-indigo-900' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' ?> rounded-lg">
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     Dashboard
                 </a>
-                <a href="<?= url('src/views/expenses.php') ?>" class="flex items-center px-2 py-3 text-sm font-medium <?= isActive('src/views/expenses.php') ? 'text-white bg-indigo-900' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' ?> rounded-lg">
+                <a href="<?= url('src/views/expenses.php') ?>" class="flex items-center px-2 py-3 text-sm font-medium <?= isActive('/src/views/expenses.php') ? 'text-white bg-indigo-900' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' ?> rounded-lg">
                     <i class="fas fa-list-alt mr-3"></i>
                     Expenses
                 </a>
-                <a href="<?= url('src/views/categories.php') ?>" class="flex items-center px-2 py-3 text-sm font-medium <?= isActive('src/views/categories.php') ? 'text-white bg-indigo-900' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' ?> rounded-lg">
+                <a href="<?= url('src/views/categories.php') ?>" class="flex items-center px-2 py-3 text-sm font-medium <?= isActive('/src/views/categories.php') ? 'text-white bg-indigo-900' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' ?> rounded-lg">
                     <i class="fas fa-tags mr-3"></i>
                     Categories
                 </a>
