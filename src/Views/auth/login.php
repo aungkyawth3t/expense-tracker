@@ -2,18 +2,23 @@
     include __DIR__ . '/../../function/url.php';
     include __DIR__ . '/../../bootstrap.php';
 
+    if(isset($_SESSION['user_id'])) {
+        header("Location: ../index.php");
+        exit;
+    }
+
     $title = "Expense Tracker | Login";
     ob_start();
     $errors = [];
 
-    if(isset($_SERVER['REQUEST_METHOD' === 'POST'])) {
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
         $remember = isset($_POST['remember-me']) ? true : false;
 
         if(empty($email)) {
             $errors['email'] = "Email is required";
-        } elseif (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = "Invalid email format";
         }
 
@@ -83,7 +88,7 @@
             <p class="text-gray-600 mt-2">Admin Dashboard</p>
         </div>
         
-        <form method="POST" action="login.php">
+        <form method="POST" action="">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                     Email
