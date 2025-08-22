@@ -1,7 +1,7 @@
 <?php
     include __DIR__ . '/../../function/url.php';
     include __DIR__ . '/../../bootstrap.php';
-
+    
     if(isset($_SESSION['user_id'])) {
         header("Location: ../index.php");
         exit;

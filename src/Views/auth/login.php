@@ -60,7 +60,7 @@
 
             $stmt = $pdo->prepare("SELECT * FROM users WHERE remember_token = ? AND token_expiry > NOW()");
             $stmt->execute([$token]);
-            $user->$stmt->fetch();
+            $user = $stmt->fetch();
 
             if($user) {
                 session_regenerate_id(true);
