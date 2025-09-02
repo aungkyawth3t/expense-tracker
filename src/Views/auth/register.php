@@ -178,7 +178,7 @@
         </p>
     </div>
 </div>
-<!-- <?php include __DIR__ . '/../components/copyright.php'; ?> -->
+<?php include __DIR__ . '/../components/copyright.php'; ?>
 <?php
 $content = ob_get_clean();
 include __DIR__ . '/../components/auth_layout.php';

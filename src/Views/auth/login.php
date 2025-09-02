@@ -41,7 +41,7 @@
 
             if($remember) {
                 $token = bin2hex(random_bytes(32));
-                $expiry = time() + 60 * 60 * 24 * 30; // one month
+                $expiry = time() + 60 * 60 * 24; // one day
                 $stmt = $pdo->prepare("UPDATE users SET remember_token = ?, token_expiry = ? WHERE id = ?");
                 $stmt->execute([$token, date('Y-m-d H:i:s', $expiry), $user['id']]);
                 // set cookie

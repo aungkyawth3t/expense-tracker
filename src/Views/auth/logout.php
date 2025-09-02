@@ -14,7 +14,7 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // delete remeember token
-if(isset($_COOKIE['remeber_token'])) {
+if(isset($_COOKIE['remember_token'])) {
   setcookie('remember_token', '', time() - 3600, '/');
 }
 
