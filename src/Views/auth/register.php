@@ -158,7 +158,7 @@
             <div class="flex items-center">
                 <input id="terms" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded <?= isset($errors['terms']) ? 'border-red-500' : '' ?>" name="terms">
                 <label for="terms" class="ml-2 block text-sm text-gray-700">
-                    I agree to the <a href="#" class="text-indigo-600 hover:text-indigo-500">Terms & Conditions</a>
+                    I agree to the <a href="#" class="text-indigo-600 hover:text-indigo-500 cursor-pointer">Terms & Conditions</a>
                 </label>
             </div>
             <?php if (isset($errors['terms'])): ?>
