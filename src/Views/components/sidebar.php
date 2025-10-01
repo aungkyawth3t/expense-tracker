@@ -36,7 +36,7 @@
                 </a>
             </div>
             
-            <div class="mt-auto mb-4">
+            <!-- <div class="mt-auto mb-4">
                 <div class="bg-indigo-700 rounded-lg p-4">
                     <div class="flex items-center">
                         <div class="bg-indigo-600 p-2 rounded-full">
@@ -51,7 +51,7 @@
                         Upgrade Now
                     </button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
