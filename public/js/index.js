@@ -1,4 +1,3 @@
-
 // Monthly Expenses Chart
 const monthlyExpensesCtx = document.getElementById('monthlyExpensesChart').getContext('2d');
 const monthlyExpensesChart = new Chart(monthlyExpensesCtx, {

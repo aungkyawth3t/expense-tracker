@@ -17,26 +17,26 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                     <div>
                                         <label for="expenseDate" class="block text-sm font-medium text-gray-700">Date</label>
-                                        <input type="text" id="expenseDate" class="flatpickr mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <input type="date" id="expenseDate" class="flatpickr mt-1 h-10 p-2 w-full sm:text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                     </div>
                                     <div>
                                         <label for="expenseAmount" class="block text-sm font-medium text-gray-700">Amount</label>
-                                        <div class="mt-1 relative rounded-md shadow-sm">
+                                        <div class="mt-1 relative rounded-md">
                                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                                 <span class="text-gray-500 sm:text-sm">$</span>
                                             </div>
-                                            <input type="number" id="expenseAmount" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                                            <input type="number" id="expenseAmount" class="h-10 block w-full pl-7 pr-12 sm:text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0.00">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <label for="expenseDescription" class="block text-sm font-medium text-gray-700">Description</label>
-                                    <input type="text" id="expenseDescription" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" id="expenseDescription" class="p-2 mt-1 w-full sm:text-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md">
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                     <div>
                                         <label for="expenseCategory" class="block text-sm font-medium text-gray-700">Category</label>
-                                        <select id="expenseCategory" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                        <select id="expenseCategory" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm rounded-md">
                                             <option value="food">Food & Dining</option>
                                             <option value="transportation">Transportation</option>
                                             <option value="utilities">Utilities</option>
@@ -46,7 +46,7 @@
                                     </div>
                                     <div>
                                         <label for="expensePayment" class="block text-sm font-medium text-gray-700">Payment Method</label>
-                                        <select id="expensePayment" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                        <select id="expensePayment" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm rounded-md">
                                             <option value="cash">Cash</option>
                                             <option value="credit-card">Credit Card</option>
                                             <option value="debit-card">Debit Card</option>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <label for="expenseNotes" class="block text-sm font-medium text-gray-700">Notes</label>
-                                    <textarea id="expenseNotes" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                                    <textarea id="expenseNotes" rows="3" class="mt-1 p-2 w-full shadow-sm sm:text-sm border-1 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
                                 </div>
                                 <div>
                                     <label class="inline-flex items-center">
@@ -71,10 +71,10 @@
                 </div>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm cursor-pointer">
+                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm cursor-pointer">
                     Save Expense
                 </button>
-                <button onclick="closeAddExpenseModal()" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm cursor-pointer">
+                <button onclick="closeAddExpenseModal()" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm cursor-pointer">
                     Cancel
                 </button>
             </div>
