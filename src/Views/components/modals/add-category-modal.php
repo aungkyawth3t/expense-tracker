@@ -16,24 +16,24 @@
                             <form id="categoryForm">
                                 <div class="mb-4">
                                     <label for="categoryName" class="block text-sm font-medium text-gray-700">Category Name</label>
-                                    <input type="text" id="categoryName" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" id="categoryName" class="mt-1 focus:outline-none focus:ring-2 p-2 focus:ring-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md">
                                 </div>
                                 <div class="mb-4">
                                     <label for="categoryDescription" class="block text-sm font-medium text-gray-700">Description</label>
-                                    <textarea id="categoryDescription" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                                    <textarea id="categoryDescription" rows="3" class="mt-1 focus:outline-none focus:ring-2 p-2 focus:ring-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
                                 </div>
                                 <div class="mb-4">
                                     <label for="categoryBudget" class="block text-sm font-medium text-gray-700">Monthly Budget</label>
-                                    <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="mt-1 relative rounded-md">
                                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                             <span class="text-gray-500 sm:text-sm">$</span>
                                         </div>
-                                        <input type="number" id="categoryBudget" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                                        <input type="number" id="categoryBudget" class="p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 block w-full pl-7 pr-12 sm:text-sm border border-gray-300 rounded-md" placeholder="0.00">
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <label for="categoryIcon" class="block text-sm font-medium text-gray-700">Icon</label>
-                                    <select id="categoryIcon" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <select id="categoryIcon" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm rounded-md">
                                         <option value="utensils">Food (utensils)</option>
                                         <option value="car">Transportation (car)</option>
                                         <option value="lightbulb">Utilities (lightbulb)</option>
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <label for="categoryColor" class="block text-sm font-medium text-gray-700">Color</label>
-                                    <select id="categoryColor" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <select id="categoryColor" class="mt-1 p-2 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm rounded-md">
                                         <option value="red">Red</option>
                                         <option value="blue">Blue</option>
                                         <option value="yellow">Yellow</option>
@@ -63,10 +63,10 @@
                 </div>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm">
+                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm cursor-pointer">
                     Save Category
                 </button>
-                <button onclick="closeAddCategoryModal()" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                <button onclick="closeAddCategoryModal()" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm cursor-pointer">
                     Cancel
                 </button>
             </div>
