@@ -96,7 +96,7 @@
                 <input class="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['email']) ? 'border-red-500' : '' ?>"" 
                     id="email" 
                     type="email" 
-                    placeholder="admin@example.com"
+                    placeholder="Enter your email"
                     name="email"
                     value="<?= htmlspecialchars($email ?? '') ?>">
                     <?php if (isset($errors['email'])): ?>
@@ -110,7 +110,7 @@
                 <input class="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['password']) ? 'border-red-500' : '' ?>"" 
                     id="password" 
                     type="password" 
-                    placeholder="••••••••"
+                    placeholder="Enter your password"
                     name="password">
                     <?php if (isset($errors['password'])): ?>
                         <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['password']) ?></p>

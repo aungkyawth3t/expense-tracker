@@ -21,13 +21,13 @@
 
         // validate inputs
         if (empty($name)) {
-            $errors['name'] = 'Name is required';
+            $errors['name'] = 'Name is required and cannot be empty.';
         } elseif(!preg_match("/^[a-zA-Z ]*$/", $name)) {
             $errors['name'] = 'Only letters and spaces allowed';
         }
 
         if (empty($email)) {
-            $errors['email'] = 'Email is required';
+            $errors['email'] = 'Email is required and cannot be empty.';
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Invalid email format';
         } else {
@@ -39,7 +39,7 @@
         }
 
         if (empty($password)) {
-            $errors['password'] = 'Password is required';
+            $errors['password'] = 'Password is required and cannot be empty.';
         } elseif (strlen($password) < 8) {
             $errors['password'] = 'Password must be at least 8 characters';
         }
@@ -104,7 +104,7 @@
                 id="full-name" 
                 type="text" 
                 name="name" 
-                placeholder="John Doe"
+                placeholder="Enter your full name"
                 value="<?= htmlspecialchars($name ?? '') ?>">
                 <?php if (isset($errors['name'])): ?>
                     <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['name']) ?></p>
@@ -119,7 +119,7 @@
             id="email" 
             name="email" 
             type="email" 
-            placeholder="yourname@example.com"
+            placeholder="Enter your email"
             value="<?= htmlspecialchars($email ?? '') ?>">
             <?php if (isset($errors['email'])): ?>
                 <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['email']) ?></p>
@@ -134,7 +134,7 @@
                 id="password" 
                 type="password" 
                 name="password" 
-                placeholder="••••••••">
+                placeholder="Enter password">
                 <?php if (isset($errors['password'])): ?>
                     <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['password']) ?></p>
                 <?php endif; ?>
@@ -148,7 +148,7 @@
             id="confirm-password" 
             type="password" 
             name="confirm_password" 
-            placeholder="••••••••">
+            placeholder="Re-enter password">
             <?php if (isset($errors['confirm_password'])): ?>
                 <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['confirm_password']) ?></p>
             <?php endif; ?>
