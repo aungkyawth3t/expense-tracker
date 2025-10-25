@@ -21,16 +21,26 @@
 
         // validate inputs
         if (empty($username)) {
-            $errors['username'] = 'User Name is required and cannot be empty.';
-        } elseif(preg_match("/\s/", $username)) {
+            $errors['username'] = 'UserName is required and cannot be empty.';
+        } 
+        elseif (preg_match("/\s/", $username)) {
             $errors['username'] = 'No spaces allowed';
+        }
+        elseif($username) {
+            $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
+            $stmt->execute([$username]);
+            if ($stmt->rowCount() > 0) {
+                $errors['username'] = "This username is already taken.";
+            }
         }
 
         if (empty($email)) {
             $errors['email'] = 'Email is required and cannot be empty.';
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        } 
+        elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Invalid email format';
-        } else {
+        } 
+        else {
             $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
             $stmt->execute([$email]);
             if ($stmt->rowCount() > 0) {
@@ -38,9 +48,10 @@
             }
         }
 
-        if (empty($password)) {
+        if(empty($password)) {
             $errors['password'] = 'Password is required and cannot be empty.';
-        } elseif (strlen($password) < 8) {
+        } 
+        elseif(strlen($password) < 8) {
             $errors['password'] = 'Password must be at least 8 characters';
         }
 
@@ -48,7 +59,7 @@
             $errors['password'] = 'Passwords do not match';
         }
 
-        if (!$agreeTerms) {
+        if(!$agreeTerms) {
             $errors['terms'] = 'You must agree to the terms and conditions';
         }
 
@@ -104,7 +115,7 @@
                 type="text" 
                 name="username" 
                 placeholder="johndoe123"
-                value="<?= htmlspecialchars($name ?? '') ?>">
+                value="<?= htmlspecialchars($username ?? '') ?>">
                 <?php if (isset($errors['username'])): ?>
                     <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['username']) ?></p>
                 <?php endif; ?>

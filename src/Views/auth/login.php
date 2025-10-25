@@ -17,10 +17,11 @@
         $remember = isset($_POST['remember-me']) ? true : false;
 
         if(empty($username)) {
-            $errors['username'] = "User Name is required and cannot be empty.";
-        } elseif (preg_match("/\s/", $username)) {
-            $errors['username'] = "User Name cannot include spaces.";
-        }
+            $errors['username'] = "UserName is required and cannot be empty.";
+        } 
+        // elseif (preg_match("/\s/", $username)) {
+        //     $errors['username'] = "UserName cannot include spaces.";
+        // }
 
         if(empty($password)) {
             $errors['password'] = "Password is required and cannot be empty.";
@@ -97,7 +98,7 @@
                 type="text" 
                 placeholder="Enter your username"
                 name="username"
-                value="<?= htmlspecialchars($email ?? '') ?>">
+                value="<?= htmlspecialchars($username ?? '') ?>">
                 <?php if (isset($errors['username'])): ?>
                     <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['username']) ?></p>
                 <?php endif; ?>

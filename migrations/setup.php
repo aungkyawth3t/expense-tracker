@@ -12,7 +12,6 @@ require_once __DIR__ . '/../config/database.php';
       try {
         // Enable foreign key constraints
         $this->pdo->exec("SET FOREIGN_KEY_CHECKS = 1");
-    
         $this->createUsersTable();
         $this->createCategoriesTable();
         $this->createExpensesTable();
@@ -20,8 +19,7 @@ require_once __DIR__ . '/../config/database.php';
         $this->insertDefaultCategories();
 
         echo "Database tables created successfully!\n";
-        echo "Expense Tracker database setup completed!\n";
-        
+        echo "Your GODDAMN database setup completed!\n";
       } 
       catch (PDOException $e) {
         die("Database migration failed: " . $e->getMessage());
@@ -40,7 +38,7 @@ require_once __DIR__ . '/../config/database.php';
       )";
       
       $this->pdo->exec($sql);
-      echo "Users table created\n";
+      echo "Users table created successfully!\n";
     }
       
     private function createCategoriesTable() {
@@ -58,7 +56,7 @@ require_once __DIR__ . '/../config/database.php';
       )";
       
       $this->pdo->exec($sql);
-      echo "Categories table created\n";
+      echo "Categories table created successfully!\n";
     }
       
     private function createExpensesTable() {
@@ -80,7 +78,7 @@ require_once __DIR__ . '/../config/database.php';
       )";
       
       $this->pdo->exec($sql);
-      echo "Expenses table created\n";
+      echo "Expenses table created successfully!\n";
     }
       
     private function createBudgetsTable() {
@@ -98,7 +96,7 @@ require_once __DIR__ . '/../config/database.php';
       )";
       
       $this->pdo->exec($sql);
-      echo "Budgets table created\n";
+      echo "Budgets table created successfully!\n";
     }
       
     private function insertDefaultCategories() {
@@ -154,7 +152,7 @@ require_once __DIR__ . '/../config/database.php';
         echo "Fresh installation requested...\n";
         $migration->dropAllTables();
     }
-    
+
     $migration->createTables();
   } 
   catch (PDOException $e) {
