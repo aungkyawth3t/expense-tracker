@@ -1,6 +1,5 @@
 <?php
-// setup.php - Database Migration Script for Expense Tracker
-require_once '../config/database.php';
+require_once __DIR__ . '/../config/database.php';
 
   class DatabaseMigration {
     private $pdo;
@@ -12,7 +11,7 @@ require_once '../config/database.php';
     public function createTables() {
       try {
         // Enable foreign key constraints
-        $this->pdo->exec("PRAGMA foreign_keys = ON");
+        $this->pdo->exec("SET FOREIGN_KEY_CHECKS = 1");
     
         $this->createUsersTable();
         $this->createCategoriesTable();
@@ -21,10 +20,10 @@ require_once '../config/database.php';
         $this->insertDefaultCategories();
 
         echo "Database tables created successfully!\n";
-        echo "Default categories inserted!\n";
         echo "Expense Tracker database setup completed!\n";
         
-      } catch (PDOException $e) {
+      } 
+      catch (PDOException $e) {
         die("Database migration failed: " . $e->getMessage());
       }
     }
@@ -32,11 +31,12 @@ require_once '../config/database.php';
     private function createUsersTable() {
       $sql = "CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(50) NOT NULL,
+        username VARCHAR(50) UNIQUE NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
-        remember_token VARCHAR(100),
-        token_expiry Date,
         password VARCHAR(255) NOT NULL,
+        fullname VARCHAR(50) NOT NULL,
+        remember_token VARCHAR(100),
+        token_expiry DateTime,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )";
       
@@ -47,8 +47,12 @@ require_once '../config/database.php';
     private function createCategoriesTable() {
       $sql = "CREATE TABLE IF NOT EXISTS categories (
         id INTEGER PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(50) NOT NULL,
         user_id INTEGER NULL,
+        name VARCHAR(50) NOT NULL,
+        description VARCHAR(100),
+        monthly_budget INTEGER NOT NULL,
+        color VARCHAR(10) NULL,
+        icon VARCHAR(30) NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
         UNIQUE KEY unique_category_name (name, user_id)
@@ -67,7 +71,7 @@ require_once '../config/database.php';
         description TEXT NOT NULL,
         expense_date DATE NOT NULL,
         payment_method ENUM('cash', 'card', 'digital_wallet', 'bank_transfer') DEFAULT 'cash',
-        receipt_image VARCHAR(255) NULL,
+        status BOOLEAN DEFAULT TRUE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
@@ -100,19 +104,19 @@ require_once '../config/database.php';
       
     private function insertDefaultCategories() {
       $defaultCategories = [
-        ['Food & Dining', 'Restaurants, groceries, and food delivery', '#EF4444', 'shopping-bag'],
-        ['Transportation', 'Fuel, public transport, taxi, maintenance', '#F59E0B', 'truck'],
-        ['Entertainment', 'Movies, games, concerts, hobbies', '#8B5CF6', 'film'],
-        ['Utilities', 'Electricity, water, internet, phone bills', '#06B6D4', 'light-bulb'],
-        ['Shopping', 'Clothing, electronics, personal items', '#EC4899', 'shopping-cart'],
-        ['Healthcare', 'Medical, pharmacy, insurance', '#10B981', 'heart'],
-        ['Education', 'Books, courses, tuition fees', '#6366F1', 'academic-cap'],
-        ['Travel', 'Flights, hotels, vacation expenses', '#F97316', 'globe'],
-        ['Bills & Payments', 'Rent, loan payments, subscriptions', '#84CC16', 'document-text'],
-        ['Other', 'Miscellaneous expenses', '#6B7280', 'dots-circle-horizontal']
+        ['Food & Dining', 'Restaurants, groceries, and food delivery', 50000, '#EF4444', 'shopping-bag'],
+        ['Transportation', 'Fuel, public transport, taxi, maintenance', 40000, '#F59E0B', 'truck'],
+        ['Entertainment', 'Movies, games, concerts, hobbies', 20000, '#8B5CF6', 'film'],
+        ['Utilities', 'Electricity, water, internet, phone bills', 10000, '#06B6D4', 'light-bulb'],
+        ['Shopping', 'Clothing, electronics, personal items', 20000, '#EC4899', 'shopping-cart'],
+        ['Healthcare', 'Medical, pharmacy, insurance', 40000, '#10B981', 'heart'],
+        ['Education', 'Books, courses, tuition fees', 100000, '#6366F1', 'academic-cap'],
+        ['Travel', 'Flights, hotels, vacation expenses', 20000, '#F97316', 'globe'],
+        ['Bills & Payments', 'Rent, loan payments, subscriptions', 30000, '#84CC16', 'document-text'],
+        ['Other', 'Miscellaneous expenses', 20000, '#6B7280', 'dots-circle-horizontal']
       ];
         
-      $sql = "INSERT IGNORE INTO categories (name, description, color, icon) VALUES (?, ?, ?, ?)";
+      $sql = "INSERT IGNORE INTO categories (name, description, monthly_budget, color, icon) VALUES (?, ?, ?, ?, ?)";
       $stmt = $this->pdo->prepare($sql);
       
       foreach ($defaultCategories as $category) {
@@ -140,10 +144,8 @@ require_once '../config/database.php';
 
 // Main execution
   try {
-    // Get database connection
-    $config = require '../config/database.php';
-    $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8mb4";
-    $pdo = new PDO($dsn, $config['username'], $config['password']);
+    $dsn = "mysql:host={$DB_HOST};dbname={$DB_NAME};charset=utf8mb4";
+    $pdo = new PDO($dsn, $DB_USER, $DB_PASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     $migration = new DatabaseMigration($pdo);
