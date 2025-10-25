@@ -17,13 +17,13 @@
         $remember = isset($_POST['remember-me']) ? true : false;
 
         if(empty($email)) {
-            $errors['email'] = "Email is required";
+            $errors['email'] = "Email is required and cannot be empty.";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = "Invalid email format";
+            $errors['email'] = "Invalid email format.";
         }
 
         if(empty($password)) {
-            $errors['password'] = "Password is required";
+            $errors['password'] = "Password is required and cannot be empty.";
         }
 
         if(empty($errors)) {
@@ -93,7 +93,7 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                     Email
                 </label>
-                <input class="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['email']) ? 'border-red-500' : '' ?>"" 
+                <input class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['email']) ? 'border-red-500' : '' ?>"" 
                     id="email" 
                     type="email" 
                     placeholder="Enter your email"
@@ -130,7 +130,7 @@
             <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 cursor-pointer" 
                 type="submit"
                 name="btnSignin">
-                Sign In
+                Login
             </button>
         </form>
         
@@ -141,7 +141,7 @@
             </p>
         </div>
     </div>
-    <!-- <?php include __DIR__ . '/../components/copyright.php'; ?> -->
+    <?php include __DIR__ . '/../components/copyright.php'; ?>
 
     <?php
     $content = ob_get_clean();
