@@ -13,17 +13,17 @@
     $success = false;
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $name = trim($_POST['name'] ?? '');
+        $username = trim($_POST['username'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
         $confirmPassword = $_POST['confirm_password'] ?? '';
         $agreeTerms = isset($_POST['terms']) ? true : false;
 
         // validate inputs
-        if (empty($name)) {
-            $errors['name'] = 'Name is required and cannot be empty.';
-        } elseif(!preg_match("/^[a-zA-Z ]*$/", $name)) {
-            $errors['name'] = 'Only letters and spaces allowed';
+        if (empty($username)) {
+            $errors['username'] = 'User Name is required and cannot be empty.';
+        } elseif(preg_match("/\s/", $username)) {
+            $errors['username'] = 'No spaces allowed';
         }
 
         if (empty($email)) {
@@ -56,9 +56,9 @@
         if (empty($errors)) {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             // insert
-            $stmt = $pdo->prepare("INSERT INTO users(name, email, password) VALUES (?, ?, ?)");
+            $stmt = $pdo->prepare("INSERT INTO users(username, email, password) VALUES (?, ?, ?)");
             $result = $stmt->execute([
-                $name,
+                $username,
                 $email,
                 $hashedPassword
             ]);
@@ -66,9 +66,9 @@
                 $success = true;
                 $_SESSION['user_id'] = $pdo->lastInsertId();
                 $_SESSION['user_email'] = $email;
-                $_SESSION['user_name'] = $name;
+                $_SESSION['user_name'] = $username;
 
-                header("Location: ../index.php");
+                header("Location: ../../../index.php");
                 exit();
             } else {
                 $errors['database'] = 'Registration failed. Please try again';
@@ -97,16 +97,16 @@
     <form method="POST" action="register.php">
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="full-name">
-                Full Name
+                User Name
             </label>
             <input class="appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['name']) ? 'border-red-500' : '' ?>" 
                 id="full-name" 
                 type="text" 
-                name="name" 
-                placeholder="John Doe"
+                name="username" 
+                placeholder="johndoe123"
                 value="<?= htmlspecialchars($name ?? '') ?>">
-                <?php if (isset($errors['name'])): ?>
-                    <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['name']) ?></p>
+                <?php if (isset($errors['username'])): ?>
+                    <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['username']) ?></p>
                 <?php endif; ?>
         </div>
             

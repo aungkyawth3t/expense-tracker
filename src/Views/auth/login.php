@@ -11,15 +11,15 @@
     ob_start();
     $errors = [];
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $email = trim($_POST['email'] ?? '');
+    if($_SERVER['REQUEST_METHOD'] && $_SERVER['REQUEST_METHOD'] === 'POST') {
+        $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
         $remember = isset($_POST['remember-me']) ? true : false;
 
-        if(empty($email)) {
-            $errors['email'] = "Email is required and cannot be empty.";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = "Invalid email format.";
+        if(empty($username)) {
+            $errors['username'] = "User Name is required and cannot be empty.";
+        } elseif (preg_match("/\s/", $username)) {
+            $errors['username'] = "User Name cannot include spaces.";
         }
 
         if(empty($password)) {
@@ -27,8 +27,8 @@
         }
 
         if(empty($errors)) {
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-            $stmt->execute([$email]);
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+            $stmt->execute([$username]);
             $user = $stmt->fetch();
         }
 
@@ -37,7 +37,7 @@
             session_regenerate_id(true);
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
-            $_SESSION['user_name'] = $user['name'];
+            $_SESSION['user_name'] = $user['username'];
 
             if($remember) {
                 $token = bin2hex(random_bytes(32));
@@ -50,7 +50,7 @@
             header("Location: ../../../index.php");
             exit();
         } else {
-            $errors['login'] = "Invalid email or password";
+            $errors['login'] = "Invalid username or password";      
         }
     }
 
@@ -66,7 +66,7 @@
                 session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_email'] = $user['email'];
-                $_SESSION['user_name'] = $user['name'];
+                $_SESSION['user_name'] = $user['username'];
 
                 header("Location: ../../../index.php");
                 exit();
@@ -90,16 +90,16 @@
     <form method="POST" action="">
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-                Email
+                User Name
             </label>
             <input class="bg-gray-50 py-2 px-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 block w-full <?= isset($errors['email']) ? 'border-red-500' : '' ?>" 
                 id="email" 
-                type="email" 
-                placeholder="Enter your email"
-                name="email"
+                type="text" 
+                placeholder="Enter your username"
+                name="username"
                 value="<?= htmlspecialchars($email ?? '') ?>">
-                <?php if (isset($errors['email'])): ?>
-                    <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['email']) ?></p>
+                <?php if (isset($errors['username'])): ?>
+                    <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['username']) ?></p>
                 <?php endif; ?>
         </div>
         <div class="mb-6">
