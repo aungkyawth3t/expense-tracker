@@ -3,7 +3,7 @@ include('src/function/url.php');
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-  header("Location: auth/login.php");
+  header("Location: src/views/auth/login.php");
   exit;
 }
 
