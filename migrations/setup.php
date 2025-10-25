@@ -13,7 +13,7 @@ require_once __DIR__ . '/../config/database.php';
         // Enable foreign key constraints
         $this->pdo->exec("SET FOREIGN_KEY_CHECKS = 1");
         $this->createUsersTable();
-        $this->createCategoriesTable();
+        $this->createCategoriesTable(); 
         $this->createExpensesTable();
         $this->createBudgetsTable();
         $this->insertDefaultCategories();
@@ -32,6 +32,7 @@ require_once __DIR__ . '/../config/database.php';
         username VARCHAR(50) UNIQUE NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
+        profile_picture VARCHAR(30),
         remember_token VARCHAR(100),
         token_expiry DateTime,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
