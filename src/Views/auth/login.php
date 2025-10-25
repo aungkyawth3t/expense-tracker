@@ -47,7 +47,7 @@
                 // set cookie
                 setcookie('remember_token', $token, $expiry, '/', '', true, true);
             }
-            header("Location: ../index.php");
+            header("Location: ../../../index.php");
             exit();
         } else {
             $errors['login'] = "Invalid email or password";
@@ -68,7 +68,7 @@
                 $_SESSION['user_email'] = $user['email'];
                 $_SESSION['user_name'] = $user['name'];
 
-                header("Location: ../index.php");
+                header("Location: ../../../index.php");
                 exit();
             }
         }

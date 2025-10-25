@@ -76,7 +76,6 @@
         }
     }
 ?>
-
 <?php if($success): ?>
     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
         <strong class="font-bold">Success!</strong>
@@ -100,11 +99,11 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="full-name">
                 Full Name
             </label>
-            <input class="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['name']) ? 'border-red-500' : '' ?>" 
+            <input class="appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['name']) ? 'border-red-500' : '' ?>" 
                 id="full-name" 
                 type="text" 
                 name="name" 
-                placeholder="Enter your full name"
+                placeholder="John Doe"
                 value="<?= htmlspecialchars($name ?? '') ?>">
                 <?php if (isset($errors['name'])): ?>
                     <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['name']) ?></p>
@@ -115,11 +114,11 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                 Email
             </label>
-            <input class="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['email']) ? 'border-red-500' : '' ?>"
+            <input class="appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['email']) ? 'border-red-500' : '' ?>"
             id="email" 
             name="email" 
             type="email" 
-            placeholder="Enter your email"
+            placeholder="johndoe123@example.com"
             value="<?= htmlspecialchars($email ?? '') ?>">
             <?php if (isset($errors['email'])): ?>
                 <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['email']) ?></p>
@@ -130,11 +129,11 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                 Password
             </label>
-            <input class="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['password']) ? 'border-red-500' : '' ?>" 
+            <input class="appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['password']) ? 'border-red-500' : '' ?>" 
                 id="password" 
                 type="password" 
                 name="password" 
-                placeholder="Enter password">
+                placeholder="•••••••••">
                 <?php if (isset($errors['password'])): ?>
                     <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['password']) ?></p>
                 <?php endif; ?>
@@ -144,11 +143,11 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm_password">
                 Confirm Password
             </label>
-            <input class="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['confirm_password']) ? 'border-red-500' : '' ?>" 
+            <input class="appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 <?= isset($errors['confirm_password']) ? 'border-red-500' : '' ?>" 
             id="confirm-password" 
             type="password" 
             name="confirm_password" 
-            placeholder="Re-enter password">
+            placeholder="Confirm password">
             <?php if (isset($errors['confirm_password'])): ?>
                 <p class="text-red-500 text-xs italic mt-1"><?= htmlspecialchars($errors['confirm_password']) ?></p>
             <?php endif; ?>
