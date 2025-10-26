@@ -1,12 +1,12 @@
 <div class="hidden md:flex md:flex-shrink-0">
     <div class="flex flex-col w-64 bg-indigo-800">
         <div class="flex items-center justify-center h-16 px-4 bg-indigo-900">
-            <div class="flex items-center">
-                <a href="<?= url('index.php') ?>">
-                    <i class="fas fa-wallet text-white text-2xl mr-2"></i>
-                    <span class="text-white text-xl font-semibold">Expense Tracker</span>
-                </a>
-            </div>
+            <div class="flex items-center mb-10">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-chart-pie text-white text-sm"></i>
+                </div>
+                <a href="/" class="text-xl font-bold ml-3 text-white">ExpenseTracker</a>
+            </div>  
         </div>
         <div class="flex flex-col flex-grow px-4 py-4 overflow-y-auto">
             <div class="space-y-1">
