@@ -1,9 +1,8 @@
 <?php
 if (!isset($title)) {
-    $title = "Expense Tracker";
+    $title = "ExpenseTracker";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,16 +23,13 @@ if (!isset($title)) {
 </head>
 <body class="bg-gray-100 font-sans">
   <div class="flex h-screen overflow-hidden">
-    
     <?php include __DIR__ . '/sidebar.php'; ?>
-    
     <div class="flex flex-col flex-1 overflow-hidden">
       <?php
         if (basename($_SERVER['SCRIPT_NAME']) !== 'profile.php') {
           include __DIR__ . '/navbar.php';
         }
       ?>
-
       <main class="flex-1 overflow-y-auto p-6 bg-gray-100">
         <?= $content ?? '' ?>
       </main>
@@ -45,6 +41,5 @@ if (!isset($title)) {
   <script src="/public/js/reports.js"></script>
   <script src="/public/js/expenses.js"></script>
   <script src="/public/js/categories.js"></script>
-
 </body>
 </html>

@@ -10,10 +10,7 @@
   ob_start();
 ?>
   <div class="flex-1">
-    <div class="flex justify-between items-center mb-8">
-      <h2 class="text-2xl font-bold text-gray-800">Profile</h2>
-    </div>
-
+    <?php include __DIR__ . '/src/views/components/profile/heading.php'; ?>
     <div class="max-w-6xl mx-auto space-y-6">
       <?php 
         include __DIR__ . '/src/views/components/profile/profile-card.php';

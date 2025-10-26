@@ -15,7 +15,7 @@
                     Dashboard
                 </a>
                 <a href="<?= url('expense.php') ?>" class="flex items-center px-2 py-3 text-sm font-medium <?= isActive('expense.php') ? 'text-white bg-indigo-900' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' ?> rounded-lg">
-                    <i class="fas fa-list-alt mr-3"></i>
+                    <i class="fa-solid fa-dollar-sign mr-3"></i>
                     Expenses
                 </a>
                 <a href="<?= url('category.php') ?>" class="flex items-center px-2 py-3 text-sm font-medium <?= isActive('category.php') ? 'text-white bg-indigo-900' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' ?> rounded-lg">
