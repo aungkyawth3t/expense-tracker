@@ -8,7 +8,7 @@
     $errors = [];
     $success = false;
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnRegister'])){
         $username = trim($_POST['username'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
@@ -17,10 +17,10 @@
 
         // validate inputs
         if (empty($username)) {
-            $errors['username'] = 'UserName is required and cannot be empty.';
+            $errors['username'] = '*username is required and cannot be empty.';
         } 
         elseif (preg_match("/\s/", $username)) {
-            $errors['username'] = 'No spaces allowed';
+            $errors['username'] = "No spaces allowed. You can add '_' instead.";
         }
         elseif($username) {
             $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
@@ -31,7 +31,7 @@
         }
 
         if (empty($email)) {
-            $errors['email'] = 'Email is required and cannot be empty.';
+            $errors['email'] = '*email is required and cannot be empty.';
         } 
         elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Invalid email format';
@@ -40,22 +40,22 @@
             $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
             $stmt->execute([$email]);
             if ($stmt->rowCount() > 0) {
-                $errors['email'] = 'Email already registered';
+                $errors['email'] = 'This email is already registered';
             }
         }
 
         if(empty($password)) {
-            $errors['password'] = 'Password is required and cannot be empty.';
+            $errors['password'] = '*password is required and cannot be empty';
         } 
         elseif(strlen($password) < 8) {
-            $errors['password'] = 'Password must be at least 8 characters';
+            $errors['password'] = '*password must be at least 8 characters long';
         }
 
-        if ($confirmPassword !== $password) {
+        if (!empty($password) && !empty($confirmPassword) && $confirmPassword !== $password) {
             $errors['password'] = 'Passwords do not match';
         }
 
-        if(!$agreeTerms) {
+        if($username && $email && $password && $confirmPassword && !$agreeTerms) {
             $errors['terms'] = 'You must agree to the terms and conditions';
         }
 
@@ -97,11 +97,11 @@
 
 <div class="bg-white rounded-lg shadow-xl p-8">
     <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-indigo-600">Create Account</h1>
-        <p class="text-gray-600 mt-2">Join Expense Tracker Admin Dashboard</p>
+        <h1 class="text-3xl font-bold text-indigo-600">ExpenseTracker</h1>
+        <p class="text-gray-600 mt-2">A simple web-based expense-tracking app to help you manage your personal finances.</p>
     </div>
     
-    <form method="POST" action="register.php">
+    <form method="POST" action="">
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="full-name">
                 User Name

@@ -7,20 +7,17 @@
     ob_start();
     $errors = [];
 
-    if($_SERVER['REQUEST_METHOD'] && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnLogin'])) {
         $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
         $remember = isset($_POST['remember-me']) ? true : false;
 
         if(empty($username)) {
-            $errors['username'] = "UserName is required and cannot be empty.";
-        } 
-        // elseif (preg_match("/\s/", $username)) {
-        //     $errors['username'] = "UserName cannot include spaces.";
-        // }
+            $errors['username'] = "*username is required and cannot be empty";
+        }
 
         if(empty($password)) {
-            $errors['password'] = "Password is required and cannot be empty.";
+            $errors['password'] = "*password is required and cannot be empty";
         }
 
         if(empty($errors)) {
@@ -30,7 +27,7 @@
         }
 
         // check password
-        if($user && password_verify($password, $user['password'])) {
+        if(!empty($user) && password_verify($password, $user['password'])) {
             session_regenerate_id(true);
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
@@ -44,15 +41,15 @@
                 // set cookie
                 setcookie('remember_token', $token, $expiry, '/', '', true, true);
             }
-            header("Location: ../../../index.php");
+            header("Location: ../index.php");
             exit();
         } else {
-            $errors['login'] = "Invalid username or password"; 
+            $errors['login'] = "Invalid username or password";
         }
     }
 
     if(!isset($_SESSION['user_id'])) { //if not logged in
-        if(isset($_COOKIE['remember_token'])) { // if user clicked remember me
+        if(isset($_COOKIE['remember_token'])) { // if user clicked remember me before
             $token = $_COOKIE['remember_token'];
 
             $stmt = $pdo->prepare("SELECT * FROM users WHERE remember_token = ? AND token_expiry > NOW()");
@@ -71,7 +68,7 @@
         }
     }
 ?>
-<?php if (isset($errors['login'])): ?>
+<?php if (!empty($username) && !empty($password) && isset($errors['login'])): ?>
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
         <strong class="font-bold">Error!</strong>
         <span class="block sm:inline"><?= htmlspecialchars($errors['login']) ?></span>
@@ -80,7 +77,7 @@
 
 <div class="bg-white rounded-lg shadow-xl p-8">
     <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-indigo-600">Expense Tracker</h1>
+        <h1 class="text-3xl font-bold text-indigo-600">ExpenseTracker</h1>
         <p class="text-gray-600 mt-2">Admin Dashboard</p>
     </div>
     
@@ -125,14 +122,14 @@
         </div>
         <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 cursor-pointer" 
             type="submit"
-            name="btnSignin">
+            name="btnLogin">
             Login
         </button>
     </form>
     
     <div class="mt-6 text-center">
         <p class="text-gray-600 text-sm">
-            Don't have an account? 
+            New to ExpenseTracker? 
             <a href="<?= url('register/index.php') ?>" class="text-indigo-600 hover:text-indigo-500 font-medium">Register here</a>
         </p>
     </div>
