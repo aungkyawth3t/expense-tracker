@@ -1,12 +1,8 @@
 <?php
-  include('src/function/url.php');
-  session_start();
-  if(!isset($_SESSION['user_id'])) {
-    header("Location: login/index.php");
-    exit;
-  }
-
+  include __DIR__ . '/src/function/url.php';
+  require_once __DIR__ . '/src/function/auth_check.php';
   $title = "Reports";
+
   ob_start();
   include __DIR__ . '/src/views/components/reports/header.php';
   include __DIR__ . '/src/views/components/reports/filter.php';
@@ -23,6 +19,6 @@
   </div>
 
 <?php
-$content = ob_get_clean();
-include __DIR__ . '/src/views/components/layout.php';
+  $content = ob_get_clean();
+  include __DIR__ . '/src/views/components/layout.php';
 ?>
