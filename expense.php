@@ -3,10 +3,10 @@
   session_start();
 
   if(!isset($_SESSION['user_id'])) {
-      header("Location: auth/login.php");
-      exit;
+    header("Location: login/index.php");
+    exit;
   }
-  $title = "Expense Tracker | Expenses";
+  $title = "Expenses";
   ob_start();
 
   include __DIR__ . '/src/views/components/expenses/header.php';

@@ -2,11 +2,11 @@
   include('src/function/url.php');
   session_start();
   if(!isset($_SESSION['user_id'])) {
-    header("Location: auth/login.php");
+    header("Location: login/index.php");
     exit;
   }
 
-  $title = "Expense Tracker | Categories";
+  $title = "Categories";
   ob_start();
 
  include __DIR__ . '/src/views/components/categories/header.php';

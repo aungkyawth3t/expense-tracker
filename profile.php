@@ -1,12 +1,13 @@
 <?php
-  include('src/function/url.php');
   session_start();
+  include __DIR__ . '/src/function/url.php';
+
   if (!isset($_SESSION['user_id'])) {
-    header("Location: src/views/auth/login.php");
+    header("Location: login/index.php");
     exit;
   }
 
-  $title = "Expense Tracker | Dashboard";
+  $title = "Profile";
   ob_start();
 ?>
   <div class="flex-1">

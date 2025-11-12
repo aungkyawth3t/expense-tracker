@@ -1,13 +1,13 @@
 <?php
-    include __DIR__ . '/../../function/url.php';
-    include __DIR__ . '/../../bootstrap.php';
+    include __DIR__ . '/../src/function/url.php';
+    include __DIR__ . '/../src/bootstrap.php';
     
     if(isset($_SESSION['user_id'])) {
         header("Location: ../index.php");
         exit;
     }
 
-    $title = "Expense Tracker | Register";
+    $title = "Register";
     ob_start();
     $errors = [];
     $success = false;
@@ -79,7 +79,7 @@
                 $_SESSION['user_email'] = $email;
                 $_SESSION['user_name'] = $username;
 
-                header("Location: ../../../index.php");
+                header("Location: ../index.php");
                 exit();
             } else {
                 $errors['database'] = 'Registration failed. Please try again';
@@ -184,11 +184,11 @@
     <div class="mt-6 text-center">
         <p class="text-gray-600 text-sm">
             Already have an account? 
-            <a href="<?= url('src/views/auth/login.php') ?>" class="text-indigo-600 hover:text-indigo-500 font-medium">Sign in here</a>
+            <a href="<?= url('login/index.php') ?>" class="text-indigo-600 hover:text-indigo-500 font-medium">Login here</a>
         </p>
     </div>
 </div>
-<?php include __DIR__ . '/../components/copyright.php'; ?>
+<?php include __DIR__ . '/../src/views/components/copyright.php'; ?>
 <?php
 $content = ob_get_clean();
-include __DIR__ . '/../components/auth_layout.php';
+include __DIR__ . '/../src/views/components/auth_layout.php';

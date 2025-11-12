@@ -1,13 +1,13 @@
 <?php
-    include __DIR__ . '/../../function/url.php';
-    include __DIR__ . '/../../bootstrap.php';
+    include __DIR__ . '/../src/function/url.php';
+    include __DIR__ . '/../src/bootstrap.php';
 
     if(isset($_SESSION['user_id'])) {
         header("Location: ../index.php");
         exit;
     }
 
-    $title = "Expense Tracker | Login";
+    $title = "Login";
     ob_start();
     $errors = [];
 
@@ -51,7 +51,7 @@
             header("Location: ../../../index.php");
             exit();
         } else {
-            $errors['login'] = "Invalid username or password";      
+            $errors['login'] = "Invalid username or password"; 
         }
     }
 
@@ -69,7 +69,7 @@
                 $_SESSION['user_email'] = $user['email'];
                 $_SESSION['user_name'] = $user['username'];
 
-                header("Location: ../../../index.php");
+                header("Location: ../index.php");
                 exit();
             }
         }
@@ -137,12 +137,12 @@
     <div class="mt-6 text-center">
         <p class="text-gray-600 text-sm">
             Don't have an account? 
-            <a href="<?= url('src/views/auth/register.php') ?>" class="text-indigo-600 hover:text-indigo-500 font-medium">Register here</a>
+            <a href="<?= url('register/index.php') ?>" class="text-indigo-600 hover:text-indigo-500 font-medium">Register here</a>
         </p>
     </div>
 </div>
-<?php include __DIR__ . '/../components/copyright.php'; ?>
+<?php include __DIR__ . '/../src/views/components/copyright.php'; ?>
 
 <?php
 $content = ob_get_clean();
-include __DIR__ . '/../components/auth_layout.php';
+include __DIR__ . '/../src/views/components/auth_layout.php';

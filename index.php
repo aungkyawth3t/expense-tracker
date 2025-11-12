@@ -3,11 +3,11 @@ include('src/function/url.php');
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-  header("Location: src/views/auth/login.php");
+  header("Location: login/index.php");
   exit;
 }
 
-$title = "Expense Tracker | Dashboard";
+$title = "Dashboard";
 
 ob_start();
 ?>
