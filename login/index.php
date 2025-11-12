@@ -78,7 +78,7 @@
 <div class="bg-white rounded-lg shadow-xl p-8">
     <div class="text-center mb-8">
         <h1 class="text-3xl font-bold text-indigo-600">ExpenseTracker</h1>
-        <p class="text-gray-600 mt-2">" A simple expense-tracking web app to help you manage your personal finances. "</p>
+        <!-- <p class="text-gray-600 mt-2">" A simple expense-tracking web app to help you manage your personal finances. "</p> -->
     </div>
     
     <form method="POST" action="">

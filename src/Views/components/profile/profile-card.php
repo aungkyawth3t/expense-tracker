@@ -6,7 +6,7 @@
         <img src="https://ui-avatars.com/api/?name=Admin+User&background=6366f1&color=fff&size=128" alt="Profile" class="w-32 h-32 rounded-full shadow-lg">
       </div>
       <div class="mt-4">
-        <h3 class="text-xl font-semibold text-gray-800">Admin User</h3>
+        <h3 class="text-xl font-semibold text-gray-800"> <?= $_SESSION['user_name'] ?? 'Guest' ?> </h3>
       </div>
     </div>
     
@@ -15,16 +15,16 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-          <input type="text" value="Admin User" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+          <input type="text" value="<?= $_SESSION['user_name'] ?>" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
         </div>
         <div>
           <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-          <input type="email" value="admin@expensetracker.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+          <input type="email" value="<?= $_SESSION['user_email'] ?>" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
         </div>
-        <div>
+        <!-- <div>
           <label class="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
           <input type="text" value="+1 (555) 123-4567" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
-        </div>
+        </div> -->
         <div class="md:col-span-2">
           <label class="block text-sm font-semibold text-gray-700 mb-2">Bio</label>
           <textarea rows="1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition-colors resize-none">Managing expenses and financial reports for the organization.</textarea>
