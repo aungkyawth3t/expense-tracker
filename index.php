@@ -1,6 +1,6 @@
 <?php
   include __DIR__ . '/src/function/url.php';
-  require_once __DIR__ . '/src/function/auth_check.php';
+  require_once __DIR__ . '/src/function/isLoggedIn.php';
   $title = "Dashboard";
 
   ob_start();
@@ -14,7 +14,7 @@
     <?php include __DIR__ . '/src/views/components/home/recent-transactions.php'; ?>
     <?php include __DIR__ . '/src/views/components/home/budget-progress.php'; ?>
   </div>
-  
+
 <?php
   $content = ob_get_clean();
   include __DIR__ . '/src/views/components/layout.php';

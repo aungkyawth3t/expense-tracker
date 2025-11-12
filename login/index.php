@@ -1,11 +1,7 @@
 <?php
     include __DIR__ . '/../src/function/url.php';
     include __DIR__ . '/../src/bootstrap.php';
-
-    if(isset($_SESSION['user_id'])) {
-        header("Location: ../index.php");
-        exit;
-    }
+    require_once __DIR__ . '/../src/function/isGuest.php';
 
     $title = "Login";
     ob_start();

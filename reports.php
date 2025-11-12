@@ -1,6 +1,6 @@
 <?php
   include __DIR__ . '/src/function/url.php';
-  require_once __DIR__ . '/src/function/auth_check.php';
+  require_once __DIR__ . '/src/function/isLoggedIn.php';
   $title = "Reports";
 
   ob_start();
